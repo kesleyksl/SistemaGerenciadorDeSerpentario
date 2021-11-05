@@ -7,7 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-
 @ManagedBean
 @SessionScoped
 
@@ -63,6 +62,25 @@ public class BeanFuncionario {
         }
     }
 
+    public void Excluir(Pessoa pessoa) {
+        try {
+            if (pessoa.excluir()) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("menu.jsf");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void Editar(Pessoa pessoa) {
+        try {
+            this.pessoa = pessoa;
+            FacesContext.getCurrentInstance().getExternalContext().redirect("cadastroSerpentes.jsf");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public String getNomeCompleto() {
         return nomeCompleto;
     }
@@ -102,7 +120,5 @@ public class BeanFuncionario {
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
-    
-    
 
 }

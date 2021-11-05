@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 import models.Animal;
@@ -11,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import models.Pessoa;
 
 /**
  *
@@ -19,7 +15,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class BeanSerpente {
-    
+
     private int idSerpente;
     private int fkFuncionario;
     private String codigo;
@@ -28,10 +24,10 @@ public class BeanSerpente {
     private String especie;
     private boolean alimentacao;
     private double pesoAlimento;
-    
+
     private Animal animal = new Animal();
-    
-        // Metodos aqui
+
+    // Metodos aqui
     public void consultarById(int id) {
         Animal cobra = new Animal();
         cobra = cobra.consultarById(id);
@@ -77,7 +73,26 @@ public class BeanSerpente {
             }
         }
     }
-    
+
+    public void Excluir(Animal animal) {
+        try {
+            if (animal.excluir()) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("menu.jsf");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void Editar(Animal animal) {
+        try {
+            this.animal = animal;
+            FacesContext.getCurrentInstance().getExternalContext().redirect("cadastroSerpentes.jsf");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public int getIdSerpente() {
         return idSerpente;
     }
@@ -149,8 +164,5 @@ public class BeanSerpente {
     public void setAnimal(Animal animal) {
         this.animal = animal;
     }
-    
-    
-    
-    
+
 }

@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Consulta</title>
+        <link rel="stylesheet" href="resources/css/style.css"></link>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"></link>
+    </h:head>
+
+    <h:body id="telaConsulta">  
+
+        <div class=".col" id="consultaSerpente">
+
+            <h:form>
+
+                <h1>Atualização de dados</h1>
+
+                <br></br>
+                <br></br>
+
+                <div>
+                    <h5>Código da serpente</h5>
+                    <p:selectOneMenu id="opcaoCobra">
+                        <f:selectItem itemLabel="serpente001" itemValue="serpente001"/>
+                        <f:selectItem itemLabel="serpente002" itemValue="serpente002"/>
+                        <f:selectItem itemLabel="serpente003" itemValue="serpente003"/>
+                        <f:selectItem itemLabel="serpente004" itemValue="serpente004"/>
+                    </p:selectOneMenu>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <h5>Espécie da serpente: {entidade.serpente.especie}</h5>
+                    <h5>Sexo da serpente: {entidade.serpente.sexo}</h5>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <h5>Peso da serpente</h5>
+                    <p:inputText id="pesoSerpente"/>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <h5>Alimentação</h5>
+                    <p:selectOneMenu id="option">
+                        <f:selectItem itemLabel="Sim" itemValue=""/>
+                        <f:selectItem itemLabel="Não" itemValue=""/>
+                    </p:selectOneMenu>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <h5>Peso do alimento</h5>
+                    <p:inputText id="pesoAlimentoSerpente"/>
+                </div>
+
+                <br></br>   
+
+                <div>
+                    <h5>Ecdise</h5>
+                    <p:selectOneMenu id="option2">
+                        <f:selectItem itemLabel="Sim" itemValue=""/>
+                        <f:selectItem itemLabel="Não" itemValue=""/>
+                    </p:selectOneMenu>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <h5>Observação</h5>
+                    <p:inputTextarea rows="6" cols="33"/>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <p:button id="botaoSalvar" value="Atualizar"></p:button>
+                </div>
+
+                <br></br>  
+
+                <div style="margin-tom: 10px;">
+                    <p:button id="botaoCancelar" value="Cancelar" href="menu.jsf"></p:button>
+                </div>
+
+            </h:form>
+        </div>   
+
+    </h:body>
+</html>
+

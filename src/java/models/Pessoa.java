@@ -59,15 +59,15 @@ public class Pessoa {
         }
         return pessoa;
     }
-    
-       public boolean salvar() {
+
+    public boolean salvar() {
         try {
             Connection con = Conexao.conectar();
             String sql;
             if (this.id == null) {
-     
-               sql = "INSERT INTO funcionario(nomecompleto, usuario, senha, tipouser) VALUES (?, ?, ?, ?)";
-                
+
+                sql = "INSERT INTO funcionario(nomecompleto, usuario, senha, tipouser) VALUES (?, ?, ?, ?)";
+
                 PreparedStatement stm = con.prepareStatement(sql);
                 stm.setString(1, this.nomeCompleto);
                 stm.setString(2, this.usuario);
@@ -88,6 +88,19 @@ public class Pessoa {
 
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
+        }
+    }
+
+    public boolean excluir() {
+        try {
+            Connection con = Conexao.conectar();
+            String sql = "DELETE FROM funcionario WHERE id = " + this.id;
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.execute();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
         }
     }
 
@@ -130,7 +143,5 @@ public class Pessoa {
     public void setTipoUser(int tipoUser) {
         this.tipoUser = tipoUser;
     }
-    
-       
-       
+
 }

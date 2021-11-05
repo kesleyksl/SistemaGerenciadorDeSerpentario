@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Menu</title>
+        <link rel="stylesheet" href="resources/css/style.css"></link>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"></link>
+    </h:head>
+
+    <h:body>
+
+        <div id="cabecalho">
+
+            <div id="parteEsquerda">
+                <h5 style="margin-top: 10px; margin-left: 10px;"></h5>
+            </div>
+
+            <div id="parteDireita">
+                <p:button value="Novo usuário" id="botaoNovoUsuario" href="cadastroFuncionario.jsf"></p:button>
+                <p:button value="Fazer logoff" id="botaoLogoff" href="index.jsf"></p:button>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-3" id="Cadastro" style="display: block; margin-left: auto; margin-right: auto;">
+                <p:button id="botaoCadastro" value="Cadastro de serpentes" href="cadastroSerpentes.jsf"></p:button>
+            </div>
+            <div class="col-md-3" id="Atualizacao">
+                <p:button id="botaoAtualizacao" value="Atualização de dados" href="atualizaDadosSerpentes.jsf"></p:button>
+            </div>
+            <div class="col-md-3" id="Consulta">
+                <p:button id="botaoConsulta" value="Consulta de dados" href="consultaSerpentes.jsf"></p:button>
+            </div>
+            <div class="col-md-3" id="Grafico">
+                <p:button id="botaoGrafico" value="Gráficos de serpentes"></p:button>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>
+

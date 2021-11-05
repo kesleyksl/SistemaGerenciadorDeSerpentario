@@ -83,9 +83,9 @@ public class Animal {
             Connection con = Conexao.conectar();
             String sql;
             if (this.idSerpente == null) {
-                                
+
                 sql = "INSERT INTO serpentes(codigo, peso, comprimento, especie, pesoalimento, alimentacao, idfuncionario)" + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-                
+
                 PreparedStatement stm = con.prepareStatement(sql);
                 stm.setString(1, this.codigo);
                 stm.setDouble(2, this.peso);
@@ -113,6 +113,19 @@ public class Animal {
 
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
+        }
+    }
+
+    public boolean excluir() {
+        try {
+            Connection con = Conexao.conectar();
+            String sql = "DELETE FROM serpentes WHERE id = " + this.idSerpente;
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.execute();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
         }
     }
 
