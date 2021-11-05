@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Login</title>
+        <link rel="stylesheet" href="resources/css/style.css"></link>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"></link>
+    </h:head>
+
+    <h:body id="FundoLogin">       
+
+        <div class=".col" id="login">
+            <h:form>
+                <div>
+                    <h4>Usuário</h4>
+                    <p:inputText id="inputUser"/>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <h4>Senha</h4>
+                    <p:password id="inputPassword" value="#{passwordView.password1}"/>
+                </div>
+
+                <br></br>
+                <br></br>
+
+                <div>
+                    <p:button value="Entrar" href="menu.jsf"></p:button>
+                </div>
+            </h:form>
+        </div>
+
+    </h:body>
+</html>
+

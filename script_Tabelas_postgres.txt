@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS Funcionario
+(
+    id serial NOT NULL,
+    nomeCompleto text,
+    usuario text,
+    senha text,
+    tipoUser integer,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE Funcionario
+    OWNER to postgres;
+
+CREATE TABLE IF NOT EXISTS serpentes
+(
+    id serial NOT NULL,
+    codigo text,
+    peso double precision,
+    comprimento double precision,
+    especie text,
+    pesoalimento double precision,
+    alimentacao boolean,
+    idfuncionario integer,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idfuncionario)
+        REFERENCES public.funcionario (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+);
+
+ALTER TABLE serpentes
+    OWNER to postgres;
