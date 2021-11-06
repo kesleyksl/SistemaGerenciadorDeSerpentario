@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Editar Funcionario</title>
+        <link rel="stylesheet" href="resources/css/style.css"></link>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"></link>
+    </h:head>
+    <h:body>
+
+        <h:form>
+
+            <h:messages></h:messages>
+
+            <div id="editFuncionario">
+
+                <h1>Edição de funcionário</h1>
+
+                <br></br>
+                <br></br>
+                
+                <div>
+                    <h5>Nome do(a) funcionário(a)</h5>
+                    <p:inputText id="nomeFuncionario" value="#{beanFuncionario.pessoa.nomeCompleto}"/>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <h5>Username</h5>
+                    <p:inputText id="username" value="#{beanFuncionario.pessoa.usuario}"/>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <h5>Senha</h5>
+                    <p:password id="senhaUsuario" value="#{beanFuncionario.pessoa.senha}"/>
+                </div>
+
+                <br></br>
+
+                <div>
+                    <h5>Tipo de usuário</h5>
+                    <p:inputText id="tipoUser" value="#{beanFuncionario.pessoa.tipoUser}"/>
+                </div>
+
+                <br></br>
+                <br></br>
+                
+                <div>
+                    <h:commandButton id="Editar" value="Salvar" action="#{beanFuncionario.editaFunc()}"></h:commandButton>
+                </div>
+
+                <br></br>
+
+                <div style="margin-bottom: 10px;">
+                    <p:button id="botaoCancelar" value="Cancelar" href="menu.jsf"></p:button>
+                </div>
+
+            </div>
+
+        </h:form>
+
+    </h:body>
+</html>
+

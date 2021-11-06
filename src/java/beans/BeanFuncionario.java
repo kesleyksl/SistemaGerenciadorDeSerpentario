@@ -2,10 +2,13 @@ package beans;
 
 import models.Pessoa;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import models.Funcionario;
 
 @ManagedBean
 @SessionScoped
@@ -16,8 +19,11 @@ public class BeanFuncionario {
     private String usuario;
     private String senha;
     private int tipoUser;
+    private List<Pessoa> lista = new ArrayList<>();
+    private String filtro = "";
 
     private Pessoa pessoa = new Pessoa();
+    private Funcionario funcionario = new Funcionario();
 
     // Metodos aqui
     public void consultarById(int id) {
@@ -43,11 +49,6 @@ public class BeanFuncionario {
             view.addMessage(null, msg);
         }
 
-        if (pessoa.getSenha() == null) {
-            msg = new FacesMessage("Informe a senha!");
-            view.addMessage(null, msg);
-        }
-
         if (msg == null) {
             if (pessoa.salvar()) {
                 try {
@@ -62,10 +63,28 @@ public class BeanFuncionario {
         }
     }
 
+    public void editaFunc() {
+
+        FacesContext view = FacesContext.getCurrentInstance();
+        FacesMessage msg = null;
+
+        if (pessoa.editar()) {
+            try {
+                pessoa = new Pessoa();
+                msg = new FacesMessage("Funcionario editado com sucesso");
+                view.addMessage(null, msg);
+                FacesContext.getCurrentInstance().getExternalContext().redirect("menu.jsf");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     public void Excluir(Pessoa pessoa) {
         try {
             if (pessoa.excluir()) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("menu.jsf");
+                lista = null;
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -75,10 +94,14 @@ public class BeanFuncionario {
     public void Editar(Pessoa pessoa) {
         try {
             this.pessoa = pessoa;
-            FacesContext.getCurrentInstance().getExternalContext().redirect("cadastroSerpentes.jsf");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("EditarFuncionario.jsf");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public void consultar() {
+        lista = new Pessoa().consultar(nomeCompleto);
     }
 
     public String getNomeCompleto() {
@@ -113,6 +136,22 @@ public class BeanFuncionario {
         this.tipoUser = tipoUser;
     }
 
+    public List<Pessoa> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Pessoa> lista) {
+        this.lista = lista;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
+    }
+
     public Pessoa getPessoa() {
         return pessoa;
     }
@@ -120,5 +159,16 @@ public class BeanFuncionario {
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
     }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+
+    
 
 }

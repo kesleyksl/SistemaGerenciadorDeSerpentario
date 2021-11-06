@@ -233,3 +233,20 @@ body{
     }
 }
 
+#pesquisaFuncionario{
+    height: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+
+#cadNovoFunc{
+    margin-left: 50px;
+}
+
+#editFuncionario{
+    color: black;
+    position: relative;
+    text-align: center;
+    margin-top: 5%;
+}

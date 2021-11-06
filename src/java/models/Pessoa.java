@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pessoa {
 
@@ -41,17 +43,17 @@ public class Pessoa {
         ResultSet rs = null;
         Pessoa pessoa = null;
         try {
-            String sql = "select * from Funcionario where id = ? ";
+            String sql = "select * from funcionario where id = ? ";
             Connection con = Conexao.conectar();
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setInt(1, id);
             rs = stm.executeQuery();
             if (rs.next()) {
                 pessoa = new Pessoa(
-                        rs.getString("nomeCompleto"),
+                        rs.getString("nomecompleto"),
                         rs.getString("usuario"),
                         rs.getString("senha"),
-                        rs.getInt("tipoUser"));
+                        rs.getInt("tipouser"));
             }
 
         } catch (SQLException ex) {
@@ -64,28 +66,33 @@ public class Pessoa {
         try {
             Connection con = Conexao.conectar();
             String sql;
-            if (this.id == null) {
 
-                sql = "INSERT INTO funcionario(nomecompleto, usuario, senha, tipouser) VALUES (?, ?, ?, ?)";
+            sql = "INSERT INTO funcionario(nomecompleto, usuario, senha, tipouser) VALUES (?, ?, ?, ?)";
 
-                PreparedStatement stm = con.prepareStatement(sql);
-                stm.setString(1, this.nomeCompleto);
-                stm.setString(2, this.usuario);
-                stm.setString(3, this.senha);
-                stm.setInt(4, this.tipoUser);
-                stm.execute();
-                return true;
-            } else {
-                sql = "UPDATE Funcionario SET nomeCompleto = '" + this.nomeCompleto
-                        + "', usuario = '" + this.usuario
-                        + "', senha = " + this.senha
-                        + ", tipouser = " + this.tipoUser;
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.setString(1, this.nomeCompleto);
+            stm.setString(2, this.usuario);
+            stm.setString(3, this.senha);
+            stm.setInt(4, this.tipoUser);
+            stm.execute();
+            return true;
 
-                PreparedStatement stm = con.prepareStatement(sql);
-                stm.execute();
-                return true;
-            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
 
+    public boolean editar() {
+        try {
+
+            Connection con = Conexao.conectar();
+            String sql;
+
+            sql = "UPDATE funcionario SET nomecompleto = '" + this.nomeCompleto + "' , usuario= '" + this.usuario + "' , senha= '" + this.senha + "' , tipouser= " + this.tipoUser + " WHERE id = " + this.id;
+
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.execute();
+            return true;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         }
@@ -102,6 +109,35 @@ public class Pessoa {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    public List<Pessoa> consultar(String filtro) {
+
+        ResultSet rs = null;
+        List<Pessoa> lista = new ArrayList<>();
+
+        try {
+            String sql;
+
+            sql = "select * from funcionario where nomecompleto like '%" + filtro + "%'";
+
+            Connection con = Conexao.conectar();
+            PreparedStatement stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                lista.add(new Pessoa(
+                        rs.getInt("id"),
+                        rs.getString("nomecompleto"),
+                        rs.getString("usuario"),
+                        rs.getString("senha"),
+                        rs.getInt("tipouser")
+                ));
+            }
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+        return lista;
     }
 
     public Integer getId() {
