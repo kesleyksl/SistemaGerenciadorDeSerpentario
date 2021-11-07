@@ -2,6 +2,8 @@ package beans;
 
 import models.Animal;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -23,6 +25,9 @@ public class BeanSerpente {
     private String especie;
     private boolean alimentacao;
     private double pesoAlimento;
+
+    private List<Animal> lista = new ArrayList<>();
+    private String filtro = "";
 
     private Animal animal = new Animal();
 
@@ -77,6 +82,7 @@ public class BeanSerpente {
         try {
             if (animal.excluir()) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("menu.jsf");
+                lista = null;
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -86,10 +92,31 @@ public class BeanSerpente {
     public void Editar(Animal animal) {
         try {
             this.animal = animal;
-            FacesContext.getCurrentInstance().getExternalContext().redirect("cadastroSerpentes.jsf");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("EditarSerpente.jsf");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public void editarSerp() {
+
+        FacesContext view = FacesContext.getCurrentInstance();
+        FacesMessage msg = null;
+
+        if (animal.editar()) {
+            try {
+                animal = new Animal();
+                msg = new FacesMessage("Serpente editada com sucesso");
+                view.addMessage(null, msg);
+                FacesContext.getCurrentInstance().getExternalContext().redirect("menu.jsf");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public void consultar() {
+        lista = new Animal().consultar(especie);
     }
 
     public int getIdSerpente() {
@@ -162,6 +189,22 @@ public class BeanSerpente {
 
     public void setAnimal(Animal animal) {
         this.animal = animal;
+    }
+
+    public List<Animal> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Animal> lista) {
+        this.lista = lista;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
 
 }

@@ -1,57 +1,124 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <h:head>
-        <title>Facelet Title</title>
+        <title>Consulta de serpentes</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+        <link rel="stylesheet" href="resources/css/style.css"></link>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"></link>
+
     </h:head>
     <h:body>
-        
-        <h:form>
-            
-            <section style="height: 30px; background: #E5E5E5;"></section>
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="menu.jsf">
+                        <strong>Serpentário</strong>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="menu.jsf">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="consultaSerpentes.jsf">Serpentes</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="consultaFuncionario.jsf">Funcionários</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Estoque alimentos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav> 
+
+            <h:messages></h:messages>
 
             <section class="corpo">
 
-                <h:dataTable class="datatable" id="dataTable" var="pdt" value="#{beanProduto.lista}">
-                    <h:column>
-                        <f:facet name="header">ID Produto</f:facet>
-                        <h:outputLabel value="#{pdt.idProduto}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Descrição</f:facet>
-                        <h:outputLabel value="#{pdt.descricao}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Estoque</f:facet>
-                        <h:outputLabel value="#{pdt.estoque}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Preço</f:facet>
-                        <h:outputLabel value="#{pdt.preco}" />
-                    </h:column> 
-                    <h:column>
-                        <f:facet name="header">Categoria</f:facet>
-                        <h:outputLabel value="#{pdt.fkCategoria}" />
-                    </h:column> 
-                    <h:column>
-                        <f:facet name="header">Obsevação</f:facet>
-                        <h:outputLabel value="#{pdt.observacao}" />
-                    </h:column>  
-                    <h:column>
-                        <h:commandButton value="Editar" action="#{beanProduto.Editar(pdt)}"></h:commandButton>
-                        <h:commandButton value="Excluir" action="#{beanProduto.Excluir(pdt)}"></h:commandButton>
-                    </h:column>
-                </h:dataTable> 
+                <h:form>
+
+                    <div id="pesquisaSerpente">
+                        <h:outputLabel>Informe parte da espécie da serpente: </h:outputLabel>
+                        <br></br>
+                        <h:inputText class="campos" value="#{beanSerpente.especie}"/>
+                        <h:commandButton class="botaopesquisa" value="Pesquisar" action="#{beanSerpente.consultar()}"></h:commandButton> 
+                    </div>
+
+
+                    <div class="card" style="margin: 50px">
+                        <p:dataTable var="serp" value="#{beanSerpente.lista}">
+                            <p:column headerText="ID">
+                                <h:outputText value="#{serp.idSerpente}" />
+                            </p:column>
+
+                            <p:column headerText="Código">
+                                <h:outputText value="#{serp.codigo}" />
+                            </p:column>
+
+                            <p:column headerText="Espécie">
+                                <h:outputText value="#{serp.especie}" />
+                            </p:column>
+
+                            <p:column headerText="Comprimento">
+                                <h:outputText value="#{serp.comprimento}" />
+                            </p:column>
+
+                            <p:column headerText="Peso">
+                                <h:outputText value="#{serp.peso}" />
+                            </p:column>
+
+                            <p:column headerText="Foi alimentada?">
+                                <h:outputText value="#{serp.alimentacao}" />
+                            </p:column>
+
+                            <p:column headerText="Peso do alimento">
+                                <h:outputText value="#{serp.pesoAlimento}" />
+                            </p:column>
+
+                            <p:column headerText="id Funcionario">
+                                <h:outputText value="#{serp.fkFuncionario}" />
+                            </p:column>
+
+                            <p:column headerText="Editar">
+                                <h:commandButton value="Editar" action="#{beanSerpente.Editar(serp)}"></h:commandButton>
+                            </p:column>
+
+                            <p:column headerText="Excluir">
+                                <h:commandButton value="Excluir" action="#{beanSerpente.Excluir(serp)}"></h:commandButton>
+                            </p:column>
+
+                        </p:dataTable>
+                    </div>
+
+                </h:form>
+
+                <div id="cadNovoFunc">
+                    <p:button href="cadastroSerpentes.jsf" value="Cadastrar serpentes"></p:button>
+                </div>
+
             </section>
 
-            <footer class="rodape">
-                <h:outputText class="textoRodape" value="Direitos autorais reservados"></h:outputText>
-            </footer>
-        </h:form>
-        
+        </main>
+
     </h:body>
 </html>
 

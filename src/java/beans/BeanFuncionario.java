@@ -80,21 +80,21 @@ public class BeanFuncionario {
         }
     }
 
+    public void Editar(Pessoa pessoa) {
+        try {
+            this.pessoa = pessoa;
+            FacesContext.getCurrentInstance().getExternalContext().redirect("EditarFuncionario.jsf");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void Excluir(Pessoa pessoa) {
         try {
             if (pessoa.excluir()) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("menu.jsf");
                 lista = null;
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void Editar(Pessoa pessoa) {
-        try {
-            this.pessoa = pessoa;
-            FacesContext.getCurrentInstance().getExternalContext().redirect("EditarFuncionario.jsf");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -167,8 +167,5 @@ public class BeanFuncionario {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
-
-
-    
 
 }

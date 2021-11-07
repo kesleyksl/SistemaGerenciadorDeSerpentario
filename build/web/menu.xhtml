@@ -12,33 +12,52 @@
 
     <h:body>
 
-        <div id="cabecalho">
+        <main>
 
-            <div id="parteEsquerda">
-                <h5 style="margin-top: 10px; margin-left: 10px;"></h5>
-            </div>
+            <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="menu.jsf">
+                        <strong>Serpentário</strong>
+                    </a>
 
-            <div id="parteDireita">
-                <p:button value="Novo usuário" id="botaoNovoUsuario" href="cadastroFuncionario.jsf"></p:button>
-                <p:button value="Fazer logoff" id="botaoLogoff" href="index.jsf"></p:button>
-            </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-        </div>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="menu.jsf">Home</a>
+                            </li>
 
-        <div class="row">
-            <div class="col-md-3" id="Cadastro" style="display: block; margin-left: auto; margin-right: auto;">
-                <p:button id="botaoCadastro" value="Cadastro de serpentes" href="cadastroSerpentes.jsf"></p:button>
-            </div>
-            <div class="col-md-3" id="Atualizacao">
-                <p:button id="botaoAtualizacao" value="Atualização de dados" href="atualizaDadosSerpentes.jsf"></p:button>
-            </div>
-            <div class="col-md-3" id="Consulta">
-                <p:button id="botaoConsulta" value="Consulta de dados" href="consultaSerpentes.jsf"></p:button>
-            </div>
-            <div class="col-md-3" id="Grafico">
-                <p:button id="botaoGrafico" value="Gráficos de serpentes"></p:button>
-            </div>
-        </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="consultaSerpentes.jsf">Serpentes</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="consultaFuncionario.jsf">Funcionários</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Estoque alimentos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav> 
+
+            <section class="hero" id="hero">
+
+                <div class="videoWrapper">
+                    <img src="resources/img/serpente.jpg" class="img-fluid news-detail-image" alt=""></img>
+                </div>
+
+                <div class="overlay"></div>
+            </section>
+
+
+
+        </main>
 
     </h:body>
 

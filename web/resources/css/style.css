@@ -2,237 +2,6 @@ body{
     margin: 0px;
 }
 
-#FundoLogin{
-    /**
-      background-image: url(../img/login.png);
-    background-repeat: no-repeat;
-        
-    **/
-    background-color: #156660;
-
-    width: 100%;
-    height: 100vh;
-}
-
-#cabecalho{
-    background-color: black;
-    position: relative;
-    height: 50px;
-}
-
-#telaCadastro{
-    background-color: black;
-}
-
-#telaConsulta{
-    background-color: black;  
-}
-
-#telaCadastroUsuario{
-    background-color: cadetblue;   
-}
-
-#consultaSerpente{
-    color: white;
-    position: relative;
-    text-align: center;
-    margin-top: 5%;
-}
-
-#cadSerpente{
-    color: white;
-    position: relative;
-    text-align: center;
-    margin-top: 5%;
-}
-
-#cadFuncionario{
-    color: white;
-    position: relative;
-    text-align: center;
-    margin-top: 5%;
-}
-#parteDireita{
-    position: relative;
-    height: auto;
-    width: 50%;
-    float: right;
-    text-align: right;
-}
-
-#parteEsquerda{
-    position: relative;
-    height: auto;
-    width: 50%;
-    float: left;
-    text-align: left;
-}
-
-#botaoNovoUsuario{
-    margin: 5px; 
-    background-color: cadetblue;
-    border-top-color: #FFFFFF;
-    border-right-color: #FFFFFF;
-    border-bottom-color: #FFFFFF;
-    border-left-color: #FFFFFF;
-}
-
-#botaoLogoff{
-    margin: 5px; 
-    background-color: cadetblue;
-    border-top-color: #FFFFFF;
-    border-right-color: #FFFFFF;
-    border-bottom-color: #FFFFFF;
-    border-left-color: #FFFFFF;
-}
-
-#botaoCadastro{
-    background-color: cadetblue;
-    border-top-color: #FFFFFF;
-    border-right-color: #FFFFFF;
-    border-bottom-color: #FFFFFF;
-    border-left-color: #FFFFFF;
-    width: 200px;
-    height: 100px;
-    margin-top: 60%;
-}
-
-#botaoAtualizacao{
-    background-color: cadetblue;
-    border-top-color: #FFFFFF;
-    border-right-color: #FFFFFF;
-    border-bottom-color: #FFFFFF;
-    border-left-color: #FFFFFF;
-    width: 200px;
-    height: 100px;
-    margin-top: 60%;
-}
-
-
-#botaoConsulta{
-    background-color: cadetblue;
-    border-top-color: #FFFFFF;
-    border-right-color: #FFFFFF;
-    border-bottom-color: #FFFFFF;
-    border-left-color: #FFFFFF;
-    width: 200px;
-    height: 100px;
-    margin-top: 60%;
-}
-
-#botaoGrafico{
-    background-color: cadetblue;
-    border-top-color: #FFFFFF;
-    border-right-color: #FFFFFF;
-    border-bottom-color: #FFFFFF;
-    border-left-color: #FFFFFF;
-    width: 200px;
-    height: 100px;
-    margin-top: 60%;
-}
-
-#botaoSalvar{
-    background-color: cadetblue;
-    border-top-color: #FFFFFF;
-    border-right-color: #FFFFFF;
-    border-bottom-color: #FFFFFF;
-    border-left-color: #FFFFFF;
-}
-
-#botaoCancelar{
-    background-color: cadetblue;
-    border-top-color: #FFFFFF;
-    border-right-color: #FFFFFF;
-    border-bottom-color: #FFFFFF;
-    border-left-color: #FFFFFF;
-}
-
-#login{
-    color: white;
-    position: relative;
-    text-align: center;
-    margin-top: 15%;
-}
-
-#Cadastro{
-    /**
-    background-color: #156660;
-    **/
-
-    background-image: url("https://inaturalist-open-data.s3.amazonaws.com/photos/27418089/large.jpg?1540848962");
-    background-repeat: no-repeat;
-
-    text-align: center;
-    position: relative;
-    margin: 0px;
-
-    width: 100%;
-    height: auto;
-}
-
-#Consulta{
-
-    /**
-    background-color: #46b99c;
-    **/
-
-    background-image: url("https://static.inaturalist.org/photos/131965939/large.jpg?1622141573");
-    background-repeat: no-repeat;
-
-    text-align: center;
-    position: relative;
-    margin: 0px;
-}
-
-#Atualizacao{
-
-    /**
-    background-color: #259684;
-    **/
-
-    background-image: url("https://inaturalist-open-data.s3.amazonaws.com/photos/71472115/large.jpeg?1588781959");
-    background-repeat: no-repeat;
-
-    text-align: center;
-    position: relative;
-    margin: 0px;
-}
-
-#Grafico{
-    /**
-    background-color: #77c8aa; 
-    **/
-
-    background-image: url("https://inaturalist-open-data.s3.amazonaws.com/photos/111728424/large.jpeg?1612205926");
-    background-repeat: no-repeat;
-
-    text-align: center;
-    position: relative;
-    margin: 0px;
-}
-
-.ui-selectonemenu{
-    width: 230px !important;
-}
-.ui-selectonemenu-label{
-    width: 230px !important;
-}  
-
-.row{
-    min-height: 92vh;
-}
-
-.container-fluid {
-    padding: 0px;
-}
-
-@media (max-width: 797px) {
-    body { 
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-}
-
 #pesquisaFuncionario{
     height: 100px;
     margin-left: 50px;
@@ -249,4 +18,18 @@ body{
     position: relative;
     text-align: center;
     margin-top: 5%;
+}
+
+#editSerpente{
+    color: black;
+    position: relative;
+    text-align: center;
+    margin-top: 5%;
+}
+
+#pesquisaSerpente{
+    height: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
 }
