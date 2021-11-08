@@ -41,6 +41,19 @@ public class Animal {
         this.fkFuncionario = fkFuncionario;
     }
 
+    public Animal(Integer idSerpente, String codigo, double peso, double comprimento, String especie, boolean alimentacao, double pesoAlimento, int fkFuncionario) {
+        this.idSerpente = idSerpente;
+        this.codigo = codigo;
+        this.peso = peso;
+        this.comprimento = comprimento;
+        this.especie = especie;
+        this.alimentacao = alimentacao;
+        this.pesoAlimento = pesoAlimento;
+        this.fkFuncionario = fkFuncionario;
+    }
+    
+    
+
     public Animal consultarById(int id) {
         ResultSet rs = null;
         Animal cobra = null;
@@ -117,6 +130,7 @@ public class Animal {
             rs = stm.executeQuery();
             while (rs.next()) {
                 lista.add(new Animal(
+                        rs.getInt("id"),
                         rs.getString("codigo"),
                         rs.getDouble("peso"),
                         rs.getInt("comprimento"),
@@ -126,7 +140,7 @@ public class Animal {
                         rs.getInt("idfuncionario")
                 ));
             }
-
+            
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         }
