@@ -10,6 +10,33 @@
     </h:head>
     <h:body>
 
+        <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+            <div class="container">
+
+                <strong>Serpentário</strong>
+
+                <div>
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="menu.jsf">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="consultaSerpentes.jsf">Serpentes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="consultaFuncionario.jsf">Funcionários</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Estoque alimentos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav> 
+
         <h:form>
 
             <h:messages></h:messages>
@@ -20,7 +47,7 @@
 
                 <br></br>
                 <br></br>
-                
+
                 <div>
                     <h5>Nome do(a) funcionário(a)</h5>
                     <p:inputText id="nomeFuncionario" value="#{beanFuncionario.pessoa.nomeCompleto}"/>
@@ -49,7 +76,7 @@
 
                 <br></br>
                 <br></br>
-                
+
                 <div>
                     <h:commandButton id="Editar" value="Salvar" action="#{beanFuncionario.editaFunc()}"></h:commandButton>
                 </div>

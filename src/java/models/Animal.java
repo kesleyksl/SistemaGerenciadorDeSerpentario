@@ -19,40 +19,50 @@ import java.util.List;
  */
 public class Animal {
 
-    private Integer idSerpente;
+    private int idSerpente;
+    private int fkFuncionario;
     private String codigo;
     private double peso;
-    private double comprimento;
+    private Double comprimento;
     private String especie;
-    private boolean alimentacao;
+    private String alimentacao;
     private double pesoAlimento;
-    private int fkFuncionario;
+    private String sexo;
+    private String ecdise;
+    private String observacao;
+
+    private List<Animal> lista = new ArrayList<>();
+    private String filtro = "";
 
     public Animal() {
     }
 
-    public Animal(String codigo, double peso, double comprimento, String especie, boolean alimentacao, double pesoAlimento, int fkFuncionario) {
+    public Animal(int fkFuncionario, String codigo, double peso, Double comprimento, String especie, String alimentacao, double pesoAlimento, String sexo, String ecdise, String observacao) {
+        this.fkFuncionario = fkFuncionario;
         this.codigo = codigo;
         this.peso = peso;
         this.comprimento = comprimento;
         this.especie = especie;
         this.alimentacao = alimentacao;
         this.pesoAlimento = pesoAlimento;
-        this.fkFuncionario = fkFuncionario;
+        this.sexo = sexo;
+        this.ecdise = ecdise;
+        this.observacao = observacao;
     }
 
-    public Animal(Integer idSerpente, String codigo, double peso, double comprimento, String especie, boolean alimentacao, double pesoAlimento, int fkFuncionario) {
+    public Animal(int idSerpente, int fkFuncionario, String codigo, double peso, Double comprimento, String especie, String alimentacao, double pesoAlimento, String sext, String ecdise, String observacao) {
         this.idSerpente = idSerpente;
+        this.fkFuncionario = fkFuncionario;
         this.codigo = codigo;
         this.peso = peso;
         this.comprimento = comprimento;
         this.especie = especie;
         this.alimentacao = alimentacao;
         this.pesoAlimento = pesoAlimento;
-        this.fkFuncionario = fkFuncionario;
+        this.sexo = sext;
+        this.ecdise = ecdise;
+        this.observacao = observacao;
     }
-    
-    
 
     public Animal consultarById(int id) {
         ResultSet rs = null;
@@ -65,13 +75,16 @@ public class Animal {
             rs = stm.executeQuery();
             if (rs.next()) {
                 cobra = new Animal(
+                        rs.getInt("idfuncionario"),
                         rs.getString("codigo"),
                         rs.getDouble("peso"),
-                        rs.getInt("comprimento"),
+                        rs.getDouble("comprimento"),
                         rs.getString("especie"),
-                        rs.getBoolean("alimentacao"),
-                        rs.getDouble("pesoAlimento"),
-                        rs.getInt("fkFuncionario"));
+                        rs.getString("alimentacao"),
+                        rs.getDouble("pesoalimento"),
+                        rs.getString("sexo"),
+                        rs.getString("ecdise"),
+                        rs.getString("observacvao"));
             }
 
         } catch (SQLException ex) {
@@ -85,7 +98,7 @@ public class Animal {
             Connection con = Conexao.conectar();
             String sql;
 
-            sql = "INSERT INTO serpentes(codigo, peso, comprimento, especie, pesoalimento, alimentacao, idfuncionario)" + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO serpentes(codigo, peso, comprimento, especie, pesoalimento, alimentacao, sexo, ecdise, observacao, idfuncionario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement stm = con.prepareStatement(sql);
             stm.setString(1, this.codigo);
@@ -93,8 +106,11 @@ public class Animal {
             stm.setDouble(3, this.comprimento);
             stm.setString(4, this.especie);
             stm.setDouble(5, this.pesoAlimento);
-            stm.setBoolean(6, this.alimentacao);
-            stm.setInt(7, this.fkFuncionario);
+            stm.setString(6, this.alimentacao);
+            stm.setString(7, this.sexo);
+            stm.setString(8, this.ecdise);
+            stm.setString(9, this.observacao);
+            stm.setInt(10, this.fkFuncionario);
             stm.execute();
             return true;
         } catch (SQLException ex) {
@@ -114,7 +130,7 @@ public class Animal {
             return false;
         }
     }
-    
+
     public List<Animal> consultar(String filtro) {
 
         ResultSet rs = null;
@@ -130,17 +146,19 @@ public class Animal {
             rs = stm.executeQuery();
             while (rs.next()) {
                 lista.add(new Animal(
-                        rs.getInt("id"),
+                        rs.getInt("idfuncionario"),
                         rs.getString("codigo"),
                         rs.getDouble("peso"),
-                        rs.getInt("comprimento"),
+                        rs.getDouble("comprimento"),
                         rs.getString("especie"),
-                        rs.getBoolean("alimentacao"),
+                        rs.getString("alimentacao"),
                         rs.getDouble("pesoalimento"),
-                        rs.getInt("idfuncionario")
+                        rs.getString("sexo"),
+                        rs.getString("ecdise"),
+                        rs.getString("observacvao")
                 ));
             }
-            
+
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         }
@@ -152,10 +170,11 @@ public class Animal {
 
             Connection con = Conexao.conectar();
             String sql;
-
+            
             sql = "UPDATE serpentes SET codigo= '" + this.codigo + "', peso= " + this.peso + ", comprimento= " + this.comprimento + ", especie= '" + this.especie
-                    + "', pesoalimento= " + this.pesoAlimento + ", alimentacao= " + this.alimentacao + ", idfuncionario= " + this.fkFuncionario + "  WHERE id = " + this.idSerpente;
-
+                    + "', pesoalimento= " + this.pesoAlimento + ", alimentacao= " + this.alimentacao + ", sexo= '"+this.sexo+"', ecdise='"+this.ecdise+
+                    "', observacao='"+this.observacao+"', idfuncionario= " + this.fkFuncionario + "  WHERE id = " + this.idSerpente;
+            
             PreparedStatement stm = con.prepareStatement(sql);
             stm.execute();
             return true;
@@ -164,11 +183,11 @@ public class Animal {
         }
     }
 
-    public Integer getIdSerpente() {
+    public int getIdSerpente() {
         return idSerpente;
     }
 
-    public void setIdSerpente(Integer idSerpente) {
+    public void setIdSerpente(int idSerpente) {
         this.idSerpente = idSerpente;
     }
 
@@ -212,11 +231,11 @@ public class Animal {
         this.especie = especie;
     }
 
-    public boolean isAlimentacao() {
+    public String getAlimentacao() {
         return alimentacao;
     }
 
-    public void setAlimentacao(boolean alimentacao) {
+    public void setAlimentacao(String alimentacao) {
         this.alimentacao = alimentacao;
     }
 
@@ -226,6 +245,46 @@ public class Animal {
 
     public void setPesoAlimento(double pesoAlimento) {
         this.pesoAlimento = pesoAlimento;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sext) {
+        this.sexo = sext;
+    }
+
+    public String getEcdise() {
+        return ecdise;
+    }
+
+    public void setEcdise(String ecdise) {
+        this.ecdise = ecdise;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public List<Animal> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Animal> lista) {
+        this.lista = lista;
+    }
+
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
     }
 
 }

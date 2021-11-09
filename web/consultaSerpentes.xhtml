@@ -7,7 +7,7 @@
 
     <h:head>
         <title>Consulta de serpentes</title>
-        
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"></link>
         <link rel="stylesheet" href="resources/css/style.css"></link>
 
@@ -18,17 +18,12 @@
 
             <nav class="navbar navbar-expand-lg bg-light shadow-lg">
                 <div class="container">
-                    <a class="navbar-brand" href="menu.jsf">
-                        <strong>Serpentário</strong>
-                    </a>
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <strong>Serpentário</strong>
 
-                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <div>
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="menu.jsf">Home</a>
                             </li>
 
@@ -92,15 +87,24 @@
                                 <h:outputText value="#{serp.pesoAlimento}" />
                             </p:column>
 
+                            <p:column headerText="Sexo">
+                                <h:outputText value="#{serp.sexo}" />
+                            </p:column>
+
+                            <p:column headerText="Ecdise">
+                                <h:outputText value="#{serp.ecdise}" />
+                            </p:column>
+
+                            <p:column headerText="Observação">
+                                <h:outputText value="#{serp.observacao}" />
+                            </p:column>
+
                             <p:column headerText="id Funcionario">
                                 <h:outputText value="#{serp.fkFuncionario}" />
                             </p:column>
 
-                            <p:column headerText="Editar">
+                            <p:column headerText="Editar/Excluir">
                                 <h:commandButton value="Editar" action="#{beanSerpente.Editar(serp)}"></h:commandButton>
-                            </p:column>
-
-                            <p:column headerText="Excluir">
                                 <h:commandButton value="Excluir" action="#{beanSerpente.Excluir(serp)}"></h:commandButton>
                             </p:column>
 

@@ -19,7 +19,10 @@ CREATE TABLE IF NOT EXISTS serpentes
     comprimento double precision,
     especie text,
     pesoalimento double precision,
-    alimentacao boolean,
+    alimentacao text
+    sexo text,
+    ecdise text
+    observacao text
     idfuncionario integer,
     PRIMARY KEY (id),
     FOREIGN KEY (idfuncionario)

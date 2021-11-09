@@ -23,8 +23,11 @@ public class BeanSerpente {
     private double peso;
     private Double comprimento;
     private String especie;
-    private boolean alimentacao;
+    private String alimentacao;
     private double pesoAlimento;
+    private String sexo;
+    private String ecdise;
+    private String observacao;
 
     private List<Animal> lista = new ArrayList<>();
     private String filtro = "";
@@ -41,7 +44,7 @@ public class BeanSerpente {
         peso = cobra.getPeso();
         comprimento = cobra.getComprimento();
         especie = cobra.getEspecie();
-        alimentacao = cobra.isAlimentacao();
+        alimentacao = cobra.getAlimentacao();
         pesoAlimento = cobra.getPesoAlimento();
     }
 
@@ -167,11 +170,11 @@ public class BeanSerpente {
         this.especie = especie;
     }
 
-    public boolean isAlimentacao() {
+    public String getAlimentacao() {
         return alimentacao;
     }
 
-    public void setAlimentacao(boolean alimentacao) {
+    public void setAlimentacao(String alimentacao) {
         this.alimentacao = alimentacao;
     }
 
@@ -183,12 +186,28 @@ public class BeanSerpente {
         this.pesoAlimento = pesoAlimento;
     }
 
-    public Animal getAnimal() {
-        return animal;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getEcdise() {
+        return ecdise;
+    }
+
+    public void setEcdise(String ecdise) {
+        this.ecdise = ecdise;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
     public List<Animal> getLista() {
@@ -205,6 +224,14 @@ public class BeanSerpente {
 
     public void setFiltro(String filtro) {
         this.filtro = filtro;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
     }
 
 }

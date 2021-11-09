@@ -15,57 +15,134 @@
 
     <h:body id="telaCadastro">  
 
+        <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+            <div class="container">
+
+                <strong>Serpentário</strong>
+
+                <div>
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="menu.jsf">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="consultaSerpentes.jsf">Serpentes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="consultaFuncionario.jsf">Funcionários</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Estoque alimentos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav> 
+
         <h:form>
 
             <h:messages></h:messages>
 
             <div id="cadSerpente">
 
-                <h1>Cadastro de serpentes</h1>
+                <fieldset>
+                    <legend style="text-align: center">Cadastro de serpente</legend>
+                    <table cellspacing="10">
+                        <tr>
+                            <td>
+                                <label for="codigo">Código: </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" name="codigo" value="#{beanSerpente.codigo}"></input>
+                            </td>
+                            <td>
+                                <label for="especie">Espécie: </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" name="especie" value="#{beanSerpente.especie}"></input>
+                            </td>
+                            <td>
+                                <label for="funcionario">Funcionario </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" name="funcionario" value="#{beanSerpente.fkFuncionario}"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="sexo">Sexo: </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" name="sexo" value="#{beanSerpente.sexo}"></input>
+                            </td>
+                            <td>
+                                <label for="Peso">Peso: </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" name="peso" value="#{beanSerpente.peso}"></input>
+                            </td>
+                            <td>
+                                <label for="sexo">Comprimento (cm) </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" name="comprimento" value="#{beanSerpente.comprimento}"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="alimentacao">Foi Alimentada? </label>
+                            </td>
+                            <td align="left">
+                                <p:selectOneMenu value="#{beanSerpente.animal.alimentacao}">
+                                    <f:selectItem itemLabel="Não" itemValue="False"/>
+                                    <f:selectItem itemLabel="Sim" itemValue="True"/>
+                                </p:selectOneMenu>
+                            </td>                        
+                            <td>
+                                <label for="pesoalimento">Peso Alimento </label>
+                            </td>
+                            <td align="left">
+                                <input type="text" name="pesoalimento" value="#{beanSerpente.pesoAlimento}"></input>
+                            </td>
+                            <td>
+                                <label for="pdf">Documentacao</label>  
+                            </td>
+                            <td>
+                                <input type="file" name="pdf"/>   
+                            </td>
 
-                <br></br>
-                <br></br>
+                        </tr>
 
-                <div>
-                    <h5>Código da serpente</h5>
-                    <p:inputText id="codSerpente" value="#{beanSerpente.animal.codigo}"/>
-                </div>
+                        <tr> 
+                            <td>
+                                <label for="alimentacao">Ecdise</label>
+                            </td>
+                            <td align="left">
+                                <p:selectOneMenu value="#{beanSerpente.animal.ecdise}">
+                                    <f:selectItem itemLabel="Não" itemValue="False"/>
+                                    <f:selectItem itemLabel="Sim" itemValue="True"/>         
+                                </p:selectOneMenu>
+                            </td> 
+                        </tr>
 
-                <br></br>
+                    </table>
 
-                <div>
-                    <h5>Código do funcionario</h5>
-                    <p:inputText id="codFuncionario" value="#{beanSerpente.animal.fkFuncionario}"/>
-                </div>
+                    <div id="botoes">
+                        <div>
+                            <h:commandButton id="botaoSalvar" value="Salvar" action="#{beanSerpente.salvar()}"></h:commandButton>
+                        </div>
 
-                <br></br>
+                        <br></br>
 
-                <div>
-                    <h5>Espécie da serpente</h5>
-                    <p:inputText id="especieSerpente" value="#{beanSerpente.animal.especie}"/>
-                </div>
+                        <div style="margin-bottom: 10px;">
+                            <p:button id="botaoCancelar" value="Cancelar" href="menu.jsf"></p:button>
+                        </div> 
+                    </div>
 
-                <br></br>
-
-                <div>
-                    <h5>Documentação</h5>
-                    <input type="file" name="pdf"/>   
-                </div>
-
-                <br></br>
-
-
-                <br></br>
-
-                <div>
-                    <h:commandButton id="botaoSalvar" value="Salvar" action="#{beanSerpente.salvar()}"></h:commandButton>
-                </div>
-
-                <br></br>
-
-                <div style="margin-bottom: 10px;">
-                    <p:button id="botaoCancelar" value="Cancelar" href="menu.jsf"></p:button>
-                </div>
+                </fieldset>
 
             </div>
 
