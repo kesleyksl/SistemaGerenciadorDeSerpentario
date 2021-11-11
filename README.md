@@ -8,6 +8,7 @@ Linguagens utilizadas para desenvolver:
   * CSS
   
   Banco de dados
-    * PostgreSQL
+   * PostgreSQL
+   
     
   
